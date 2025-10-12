@@ -36,7 +36,7 @@ func main() {
 
 	start := time.Now()
 	key := os.Getenv("ENCRYPT_DECRYPT_KEY")
-	df := os.Getenv("DECRPTED_FILE_NAME")
+	df := os.Getenv("DECRYPTED_FILE_NAME")
 
 	//create the response file
 	tmpName := "tmpholderforfile.customextension"
