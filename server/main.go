@@ -12,7 +12,6 @@ import (
 	"github.com/omept/secure-file-transfer/utils/checkerr"
 )
 
-// render a json file from local as a server
 func main() {
 
 	err := godotenv.Load()
