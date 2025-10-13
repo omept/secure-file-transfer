@@ -62,7 +62,6 @@ func main() {
 			log.Println("encrypt decrypt error: ", err)
 			break
 		}
-		// log.Println("bytes decrypted: ", decrypted)
 		nf, err := file.WriteString(string(decrypted))
 		if err != nil {
 			log.Printf("error:  %v \n", err)
