@@ -32,7 +32,7 @@ func main() {
 	checkerr.Check(err)
 	defer conn.Close()
 	var bucket [10268]byte // Although the server reads from the sent file in chuncks of [1024*10]byte array (10kb), the resulting AES-256 encrypted version is larger on completion of each chuck. I used the exact size for the AES-256 encryted version of a [1024*10]byte array to aviod discripancies during decryption. I.e, I get a [10268] byte array when I encrypt a [10240]byte array AES-256. I'm running on my non M chip Macbook pro.
-	//👆🏽 pro tip: the extra 28byte is the size of the initialization vector (nonce). Go's implementation probably uses  Galois/Counter Mode for the initialization vector (nonce)
+	//👆🏽 pro tip: the extra 28byte is the size of the initialization vector (nonce) and Auth flag. Go's implementation probably uses  Galois/Counter Mode for the initialization vector (nonce).
 
 	start := time.Now()
 	key := os.Getenv("ENCRYPT_DECRYPT_KEY")
