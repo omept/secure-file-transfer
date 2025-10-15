@@ -113,7 +113,7 @@ func encrypt(data []byte, passphrase string) ([]byte, error) {
 	// Create a random nonce
 	nonce := make([]byte, gcm.NonceSize())
 	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
-		return nil, err
+		return []byte{}, err
 	}
 	cipherBytes := gcm.Seal(nonce, nonce, data, nil)
 	return cipherBytes, nil
