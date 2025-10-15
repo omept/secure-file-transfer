@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/aes"
 	"crypto/cipher"
+	"crypto/rand"
 	"io"
 	"log"
 	"net"
@@ -109,7 +110,11 @@ func encrypt(data []byte, passphrase string) ([]byte, error) {
 	if err != nil {
 		return []byte{}, err
 	}
+	// Create a random nonce
 	nonce := make([]byte, gcm.NonceSize())
+	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
+		return nil, err
+	}
 	cipherBytes := gcm.Seal(nonce, nonce, data, nil)
 	return cipherBytes, nil
 }
